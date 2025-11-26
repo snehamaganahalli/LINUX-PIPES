@@ -35,6 +35,8 @@ if(fread(buf,1,100,fp ))
 
   the below command is equal to:
   echo sneha magi | grep -i dolly
+
+  Parent (your program) ----WRITE----> [PIPE] ----READ----> Child (grep -i dolly)
 */
 fp = popen("grep -i dolly", "w");
 fwrite(buf,1,100,fp );
