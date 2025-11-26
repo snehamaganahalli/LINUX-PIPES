@@ -5,6 +5,13 @@
    When we invoke popen and new process is invoked. We can either read from the new process
    or write from the new process. Pipe will have 2 ends, 1 will be read end and one will be write end.
    Therefore pipe cannot be opened in both read and write mode.
+
+   #include <stdio.h>
+FILE *popen(const char *command, const char *mode);
+command: A null-terminated string containing the shell command line to be executed.
+mode: A null-terminated string specifying the I/O mode for the pipe:
+"r": Opens the pipe for reading. The standard output of the command will be directed to the pipe, and the calling process can read from it.
+"w": Opens the pipe for writing. The standard input of the command will be connected to the pipe, and the calling process can write to it.
 */
 
 int main()
@@ -35,8 +42,6 @@ if(fread(buf,1,100,fp ))
 
   the below command is equal to:
   echo sneha magi | grep -i dolly
-
-  Parent (your program) ----WRITE----> [PIPE] ----READ----> Child (grep -i dolly)
 */
 fp = popen("grep -i dolly", "w");
 fwrite(buf,1,100,fp );
